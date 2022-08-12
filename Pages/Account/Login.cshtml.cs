@@ -6,11 +6,15 @@ namespace IssueTracker.Pages.Account
 {
     public class LoginModel : PageModel
     {
+
         [BindProperty]
         public Credential Credential { get; set; } = default!;
 
         public void OnPost()
         {
+            if (!ModelState.IsValid) return;
+
+            //Verify the credentials
         }
     }
 
