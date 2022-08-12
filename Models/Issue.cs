@@ -16,5 +16,12 @@ namespace IssueTracker.Models
         [DataType(DataType.Date)]
         [Display(Name = "Created On")]
         public DateTime Created { get; set; }
+
+        [DataType(DataType.Date)]
+        [Display(Name = "Last Updated")]
+        public DateTime LastUpdated { get; set; }
+
+        public Project ParentProject { get; set; } = default!;
+        public User CreatedBy { get; set; } = default!;
     }
 }

@@ -17,5 +17,6 @@ namespace IssueTracker.Models
         [Display(Name = "Created On")]
         public DateTime Created { get; set; }
 
+        public User CreatedBy { get; set; } = default!;
     }
 }
