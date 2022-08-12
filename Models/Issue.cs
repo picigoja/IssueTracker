@@ -2,7 +2,7 @@
 
 namespace IssueTracker.Models
 {
-    public class Project
+    public class Issue
     {
         public int Id { get; set; }
 
@@ -16,6 +16,5 @@ namespace IssueTracker.Models
         [DataType(DataType.Date)]
         [Display(Name = "Created On")]
         public DateTime Created { get; set; }
-
     }
 }
