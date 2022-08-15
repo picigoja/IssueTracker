@@ -20,12 +20,16 @@ namespace IssueTracker.Pages.Users
 
         [BindProperty]
         public new User User { get; set; } = default!;
+
+        [BindProperty]
+        public bool UserNameTaken { get; set; } = false;
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
-          if (!ModelState.IsValid || _context.User == null || User == null)
+            UserNameTaken = _context.User.FirstOrDefault(u => u.Name == User.Name) != null;
+            if (!ModelState.IsValid || _context.User == null || User == null || UserNameTaken)
             {
                 return Page();
             }

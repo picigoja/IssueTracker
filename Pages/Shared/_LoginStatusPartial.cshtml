@@ -1,7 +1,8 @@
 ﻿@if (User.Identity.IsAuthenticated)
 {
     <form method="post" class="form-inline" asp-page="/Account/Logout">
-        Welcome @User.Identity.Name
+        Welcome
+        <a asp-page="./Details" asp-route-id="">@User.Identity.Name</a>
         <button type="submit" class="m-lg-2 btn btn-link">Logout</button>
     </form>
 }

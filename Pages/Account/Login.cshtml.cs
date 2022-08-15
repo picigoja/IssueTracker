@@ -31,7 +31,7 @@ namespace IssueTracker.Pages.Account
             {
                 var claims = new List<Claim> {
                     new Claim(ClaimTypes.Name, user.Name),
-                    new Claim(ClaimTypes.Email, user.Email),
+                    new Claim(ClaimTypes.Email, user.Email)
                 };
                 var identity = new ClaimsIdentity(claims, AuthCookie);
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
