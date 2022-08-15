@@ -1,10 +1,17 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using IssueTracker.Data;
+using IssueTracker.Pages.Account;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+builder.Services.AddAuthentication().AddCookie(LoginModel.AuthCookie, options =>
+{
+    options.Cookie.Name = LoginModel.AuthCookie;
+});
+
 builder.Services.AddDbContext<IssueTrackerContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("IssueTrackerContext") ?? throw new InvalidOperationException("Connection string 'IssueTrackerContext' not found.")));
 
