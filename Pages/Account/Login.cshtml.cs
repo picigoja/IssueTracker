@@ -2,6 +2,7 @@ using IssueTracker.Data;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Security.Claims;
 
@@ -24,21 +25,20 @@ namespace IssueTracker.Pages.Account
         {
             if (!ModelState.IsValid) return Page();
 
-            //Verify the credentials
-            if (Credential.UserName == "admin" && Credential.Password == "password") 
+            var user = await _context.User.FirstOrDefaultAsync(m => m.Name == Credential.UserName);
+            if (user == null) return Page();
+            if (user.Password == Credential.Password)
             {
-                var claims = new List<Claim>
-                {
-                    new Claim(ClaimTypes.Name, Credential.UserName)
+                var claims = new List<Claim> {
+                    new Claim(ClaimTypes.Name, user.Name),
+                    new Claim(ClaimTypes.Email, user.Email),
                 };
                 var identity = new ClaimsIdentity(claims, AuthCookie);
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
 
                 await HttpContext.SignInAsync(AuthCookie, claimsPrincipal);
-
                 return RedirectToPage("/Index");
             }
-
             return Page();
         }
     }

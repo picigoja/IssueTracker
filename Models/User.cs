@@ -10,7 +10,6 @@ namespace IssueTracker.Models
         [Required]
         public string Name { get; set; } = default!;
 
-        [DataType(DataType.EmailAddress)]
         [Required]
         public string Email { get; set; } = default!;
 

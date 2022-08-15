@@ -33,7 +33,7 @@ namespace IssueTracker.Pages.Users
             _context.User.Add(User);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Index");
         }
     }
 }
