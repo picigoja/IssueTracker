@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-builder.Services.AddAuthentication().AddCookie(LoginModel.AuthCookie, options =>
+builder.Services.AddAuthentication(LoginModel.AuthCookie).AddCookie(LoginModel.AuthCookie, options =>
 {
     options.Cookie.Name = LoginModel.AuthCookie;
 });
@@ -30,6 +30,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

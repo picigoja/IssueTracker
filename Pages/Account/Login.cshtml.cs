@@ -29,8 +29,7 @@ namespace IssueTracker.Pages.Account
             {
                 var claims = new List<Claim>
                 {
-                    new Claim(ClaimTypes.NameIdentifier, Credential.UserName),
-                    new Claim(ClaimTypes.Email, "email placeholder"),
+                    new Claim(ClaimTypes.Name, Credential.UserName)
                 };
                 var identity = new ClaimsIdentity(claims, AuthCookie);
                 ClaimsPrincipal claimsPrincipal = new ClaimsPrincipal(identity);
