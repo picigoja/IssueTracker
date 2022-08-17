@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using IssueTracker.Models;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace IssueTracker.Data
 {
@@ -14,6 +9,8 @@ namespace IssueTracker.Data
         {
         }
 
-        public DbSet<IssueTracker.Models.User> User { get; set; } = default!;
+        public DbSet<Models.User> User { get; set; } = default!;
+
+        public DbSet<Models.Project>? Project { get; set; }
     }
 }

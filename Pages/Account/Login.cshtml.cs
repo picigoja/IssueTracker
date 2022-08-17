@@ -1,4 +1,5 @@
 using IssueTracker.Data;
+using IssueTracker.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
